@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WebGazer.js Example</title>
+    <!-- Include WebGazer.js -->
+    <script src="https://webgazer.cs.brown.edu/webgazer.js" type="text/javascript"></script>
+</head>
+<body>
+    <h1>WebGazer.js Example</h1>
+    <p>This page demonstrates the integration of WebGazer.js.</p>
+    
+    <script type="text/javascript">
+        // Start WebGazer
+        webgazer.begin({
+            // Set up gaze listener
+            gazeListener: function(data, elapsedTime) {
+                if (data == null) {
+                    return;
+                }
+                var xprediction = data.x; // X coordinate relative to the viewport
+                var yprediction = data.y; // Y coordinate relative to the viewport
+                console.log("Elapsed Time: " + elapsedTime);
+                console.log("X Prediction: " + xprediction);
+                console.log("Y Prediction: " + yprediction);
+            },
+            // Optional: Specify a callback for when the calibration is done
+            calibrationCallback: function() {
+                console.log("Calibration Complete");
+            }
+        });
+    </script>
+</body>
+</html>
